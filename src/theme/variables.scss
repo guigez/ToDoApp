@@ -3,8 +3,8 @@
 
 /** Ionic CSS Variables **/
 :root {
-  /** primary **/
-  --ion-color-primary: #3880ff;
+      /** primary **/
+  --ion-color-primary: #1CADFE;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -234,3 +234,5 @@
     --ion-card-background: #1e1e1e;
   }
 }
+//fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,900&display=swap');
