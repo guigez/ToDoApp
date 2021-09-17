@@ -1,0 +1,49 @@
+.cdk-drag-preview{
+  background: linear-gradient(90deg, #1CD8D2 0%, #93EDC7 100%);
+  border-radius: 15px;
+}
+
+.cdk-drag-placeholder{
+  opacity: 0;
+}
+
+.cdk-drag-animating{
+  transition: transform 250ms cubic-bezier(0,0,0.2,1);
+}
+
+ion-content {
+  --background: #fff;
+
+  ion-list{
+    min-height: 200px;
+    background: #fff;
+
+    ion-list-header{
+      color: black;
+      font-family: spartan;
+      margin-bottom: 1px;
+      font-size: 12px;
+    }
+  }
+
+  ion-card{
+    background: #efefef;
+    margin-top: 1px;
+    margin-left: 25px;
+    border-radius: 15px;
+  }
+
+  ion-fab{
+    .Add{
+      --background: #64FCD9;
+    }
+
+    .Add-task{
+      --background: #8D4FDB
+    }
+
+    .Add-people{
+      --background: #1CAEFE;
+    }
+  }
+}

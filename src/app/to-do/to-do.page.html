@@ -1,9 +1,76 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>toDo</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button href="main">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div>
+    <ion-list
+      cdkDropList
+      #Tasks="cdkDropList"
+      [cdkDropListData]="listTasks"
+      [cdkDropListConnectedTo]="[Doing, Completed]"
+      (cdkDropListDropped)="drop($event)"
+    >
+    <ion-list-header>Tasks</ion-list-header>
+      <ion-card *ngFor="let item of listTasks" cdkDrag>
+        <ion-card-content> {{item}} </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+
+  <div>
+    <ion-list
+      cdkDropList
+      #Doing="cdkDropList"
+      [cdkDropListData]="listDoing"
+      [cdkDropListConnectedTo]="[Tasks, Completed]"
+      (cdkDropListDropped)="drop($event)"
+    >
+    <ion-list-header>Doing</ion-list-header>
+      <ion-card *ngFor="let item of listDoing" cdkDrag>
+        <ion-card-content> {{item}} </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+
+  <div>
+    <ion-list
+      cdkDropList
+      #Completed="cdkDropList"
+      [cdkDropListData]="listCompleted"
+      [cdkDropListConnectedTo]="[Tasks, Doing]"
+      (cdkDropListDropped)="drop($event)"
+    >
+    <ion-list-header>Completed</ion-list-header>
+      <ion-card *ngFor="let item of listCompleted" cdkDrag>
+        <ion-card-content> {{item}} </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button class="Add">
+      <ion-icon name="Add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button class="Add-task">
+        <ion-icon src="../../assets/icon/add_task.svg"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="start">
+      <ion-fab-button class="Add-people">
+        <ion-icon src="../../assets/icon/add-people.svg"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 
 </ion-content>
