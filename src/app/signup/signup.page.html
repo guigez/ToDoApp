@@ -1,9 +1,51 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-  </ion-toolbar>
+
+<ion-header class="ion-no-border">
 </ion-header>
 
-<ion-content>
+<ion-app>
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md = "6" offset-md = "3">
+         <!-- <ion-card>
+            <ion-card-header>-->
+              <div>
+              <!--<ion-card-title class="title1">WELCOME</ion-card-title>-->
+               <h1 class = "title1">WELCOME</h1>
+            </div>
+            <!--</ion-card-header>-->
+            <!--<ion-card-content>-->
+              <ion-item class = "roundedInput">
+                <ion-label position = "floating" class = "textColor">NAME</ion-label>
+                <ion-input type = "text"></ion-input>
+              </ion-item>
+          
+              <ion-item class = "roundedInput">
+                <ion-label position = "floating" class = "textColor">EMAIL</ion-label>
+                <ion-input type = "text"></ion-input>
+              </ion-item>
+          
+              <ion-item class = "roundedInput">
+                <ion-label position = "floating" class = "textColor">PASSWORD</ion-label>
+                <ion-input type = "text" ></ion-input>
+              </ion-item>
+          
+              <ion-item class = "roundedInput">
+                <ion-label position = "floating" class = "textColor">CONFIRM PASSWORD</ion-label>
+                <ion-input type = "text"></ion-input>
+              </ion-item>
+              
+              <div class="buttons ion-text-center">
+                <ion-button class="button-signup" expand="block" shape="round" size = "large">SIGN UP</ion-button>
+                <a href="localhost:8100/login">Already have an account?</a>
+              </div>
+            <!--</ion-card-content>-->
+          <!--</ion-card>-->
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  </ion-content>
 
-</ion-content>
+</ion-app>
