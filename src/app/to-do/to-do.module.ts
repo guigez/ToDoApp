@@ -8,12 +8,15 @@ import { ToDoPageRoutingModule } from './to-do-routing.module';
 
 import { ToDoPage } from './to-do.page';
 
+import {CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ToDoPageRoutingModule
+    ToDoPageRoutingModule,
+    DragDropModule
   ],
   declarations: [ToDoPage]
 })
