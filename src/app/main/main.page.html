@@ -16,6 +16,34 @@
     <img src="./assets/image/planets_main.svg">
     <ion-text><br>Nothing ToDo :c<br>Let's do something fun<br>:D</ion-text>
   </div>
+  <div [hidden]="!showNothing" class="cardList ion-text-center">
+    <ion-grid>
+      <ion-row >
+        <ion-col col-6>
+          <ion-card text-center padding button=true>
+            <h2>ola</h2>
+          </ion-card>
+        </ion-col>
+        <ion-col col-6>
+          <ion-card text-center padding button=true>
+            <h2>ola</h2>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row >
+        <ion-col col-6>
+          <ion-card text-center padding button=true>
+            <h2>ola</h2>
+          </ion-card>
+        </ion-col>
+        <ion-col col-6>
+          <ion-card text-center padding button=true>
+            <h2>ola</h2>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button class="Add" href = "create-board">
