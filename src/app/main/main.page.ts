@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPage implements OnInit {
 
+  showNothing = true;
+
   constructor() { }
 
   ngOnInit() {

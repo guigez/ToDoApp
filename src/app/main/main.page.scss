@@ -1,0 +1,32 @@
+ion-content{
+  h1{
+    font-family: Spartan;
+    font-size: 36px;
+    margin-left: 25px;
+    margin-top: 25px;
+  }
+  .container{
+    ion-text{
+      font-family: Spartan;
+      font-size: 24px;
+      line-height: 40px;
+    }
+    img{
+      margin-top: 10%;
+      }
+  }
+
+  ion-fab{
+    .Add{
+      --background: #64FCD9;
+    }
+
+    .Add-task{
+      --background: #8D4FDB
+    }
+
+    .Add-people{
+      --background: #1CAEFE;
+    }
+  }
+}
