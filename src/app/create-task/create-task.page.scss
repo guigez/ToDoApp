@@ -1,0 +1,25 @@
+ion-content {
+
+  h1{
+    font-size: 40px;
+    font-family: Raleway;
+    line-height: 40px;
+    margin-top: 10%;
+  }
+
+  .button-create{
+    --background: #64FCD9;
+    margin-top: 50%;
+  }
+
+  .Input{
+    margin-top: 20%;
+    --border-color: var(--ion-color-medium-shade);
+    --border-radius: 4px;
+    --box-shadow: 2px #E9F4FF;
+    --highlight-height: 0;
+    --background: #f8f9fa;
+    margin-bottom: 5%;
+    color:#00B692;
+  }
+}
