@@ -1,14 +1,16 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ViewDidLeave, ViewWillLeave } from '@ionic/angular';
 import { Task } from '../../models/task';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-to-do',
   templateUrl: './to-do.page.html',
   styleUrls: ['./to-do.page.scss'],
 })
-export class ToDoPage implements OnInit {
+export class ToDoPage implements OnInit, OnDestroy{
 
 
   listTasks:Task[] = []
@@ -17,7 +19,7 @@ export class ToDoPage implements OnInit {
 
   tasks: Task[];
 
-  constructor(private router: Router) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -40,15 +42,43 @@ export class ToDoPage implements OnInit {
           break;
       }          
     });
+
+    window.onbeforeunload = () => this.ngOnDestroy();
   }
+
+  ngOnDestroy(){
+    this.updateTasks();
+  }
+
+  updateTasks(){
+    this.listTasks.forEach(element => {    
+      if(element.status != 'tasks'){
+        element.status = 'tasks'; 
+        this.api.updateTask(element).subscribe(data => {console.log(data)});
+      }  
+    });
+    this.listDoing.forEach(element => {    
+      if(element.status != 'doing'){
+        element.status = 'doing';
+        this.api.updateTask(element).subscribe(data => {console.log(data)});
+      }  
+    });
+    this.listCompleted.forEach(element => {    
+      if(element.status != 'completed'){
+        element.status = 'completed';
+        this.api.updateTask(element).subscribe(data => {console.log(data)}); 
+      }
+    });
+  }
+
 
   drop(event: CdkDragDrop<string[]>) {
     if(event.previousContainer === event.container){
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);    
     }else{
-        transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
+    //this.updateTasks();
   }
 
 }

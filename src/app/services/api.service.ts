@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Board } from '../../models/Board';
 import { Observable } from 'rxjs';
@@ -9,8 +9,10 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
   private url: string = 'http://localhost:3333';
-  private httpOptions: {ContentType : 'application/json'};
-
+  httpOptions = {
+    headers: new HttpHeaders ({ 'Content-Type': 'application/json' })
+  };
+  
   constructor(private http: HttpClient) { }
 
   /* Create */
@@ -19,7 +21,6 @@ export class ApiService {
   }
 
   createTask(task: any): Observable<any>{
-    console.log(task)
     return this.http.post<any>(`${this.url}/task`, task);
   }
 
@@ -28,8 +29,8 @@ export class ApiService {
 
   }
 
-  updateTask(){
-
+  updateTask(task: any){
+    return this.http.put(`${this.url}/task/${task._id}`, JSON.stringify(task), this.httpOptions);
   }
 
   /* Delete */
