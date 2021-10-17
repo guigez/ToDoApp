@@ -1,5 +1,7 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Task } from '../../models/task';
 
 @Component({
   selector: 'app-to-do',
@@ -9,14 +11,36 @@ import { Component, OnInit } from '@angular/core';
 export class ToDoPage implements OnInit {
 
 
-  listTasks = ['A - 1', 'A - 2', 'A - 3'];
-  listDoing = ['B - 1', 'B - 2', 'B - 3'];
-  listCompleted = ['C - 1', 'C - 2', 'C - 3'];
+  listTasks:Task[] = []
+  listDoing:Task[] = [];
+  listCompleted:Task[] = [];
 
+  tasks: Task[];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.tasks = JSON.parse(localStorage.getItem('tasks'));
+
+    this.tasks.forEach(element => {
+      switch(element.status){
+        case 'tasks':
+          this.listTasks.push(element);
+          break;
+
+        case 'doing':
+          this.listDoing.push(element);
+          break;
+
+        case 'completed':
+          this.listCompleted.push(element);
+          break;
+
+        default:
+          break;
+      }          
+    });
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if(event.previousContainer === event.container){

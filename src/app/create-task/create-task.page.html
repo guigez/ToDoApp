@@ -14,10 +14,10 @@
 
   <ion-item class = "Input">
     <ion-label position = "floating" class = "textColor">TITLE TASK</ion-label>
-    <ion-input type = "text"></ion-input>
+    <ion-input #taskTitle type = "text"></ion-input>
   </ion-item>
 
   <div class="buttons ion-text-center">
-    <ion-button class="button-create" expand="block" shape="round">CREATE</ion-button>
+    <ion-button class="button-create" expand="block" shape="round" (click)="createTask(taskTitle.value)">CREATE</ion-button>
   </div>
 </ion-content>

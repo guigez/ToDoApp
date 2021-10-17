@@ -31,6 +31,9 @@ ion-content{
   }
 
   .cardList{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
     ion-card{
       height: 150px;
       --background: #58E2CC;

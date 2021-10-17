@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
+
 
 @Component({
   selector: 'app-create-board',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateBoardPage implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
+  constructor( private api: ApiService, private router: Router) {  }
+
+  ngOnInit() { }
+
+  createBoard(title: String){
+    const data = {
+      title: title,
+      userId: "6164d734a7c92f90abab433c"
+    }
+    this.api.createBoard(data).subscribe(result =>{
+      this.router.navigate(['/main']);
+    });
   }
 
 }

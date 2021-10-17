@@ -12,12 +12,15 @@
 
   <h1>CREATE<br>BOARDS</h1>
 
-  <ion-item class = "Input">
-    <ion-label position = "floating" class = "textColor">TITLE BOARD</ion-label>
-    <ion-input type = "text"></ion-input>
-  </ion-item>
 
-  <div class="buttons ion-text-center">
-    <ion-button class="button-create" expand="block" shape="round">CREATE</ion-button>
-  </div>
+    <ion-item class="Input">
+      <ion-label position="floating" class="textColor">TITLE BOARD</ion-label>
+      <ion-input #boardTitle name="title" type="text"></ion-input>
+    </ion-item>
+    <div class="buttons ion-text-center">
+      <ion-button class="button-create" expand="block" shape="round" (click)="createBoard(boardTitle.value)">CREATE</ion-button>
+    </div>
+
+
 </ion-content>
+

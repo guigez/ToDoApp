@@ -22,7 +22,7 @@
     >
     <ion-list-header>Tasks</ion-list-header>
       <ion-card *ngFor="let item of listTasks" cdkDrag>
-        <ion-card-content> {{item}} </ion-card-content>
+        <ion-card-content> {{item.title}} </ion-card-content>
       </ion-card>
     </ion-list>
   </div>
@@ -37,7 +37,7 @@
     >
     <ion-list-header>Doing</ion-list-header>
       <ion-card *ngFor="let item of listDoing" cdkDrag>
-        <ion-card-content> {{item}} </ion-card-content>
+        <ion-card-content> {{item.title}} </ion-card-content>
       </ion-card>
     </ion-list>
   </div>
@@ -52,7 +52,7 @@
     >
     <ion-list-header>Completed</ion-list-header>
       <ion-card *ngFor="let item of listCompleted" cdkDrag>
-        <ion-card-content> {{item}} </ion-card-content>
+        <ion-card-content> {{item.title}} </ion-card-content>
       </ion-card>
     </ion-list>
   </div>
@@ -62,7 +62,7 @@
       <ion-icon name="Add"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button href="create-task"class="Add-task">
+      <ion-fab-button href="create-task" class="Add-task">
         <ion-icon src="../../assets/icon/add_task.svg"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
