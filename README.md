@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/icon.png" width="140px" />
+  <img src=".github/logo.png" width="140px" />
 </p>
 
 <h1 align="center">App ToDo Applicaton</h1>
@@ -9,9 +9,18 @@
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/-Ionic-blue" />
+  </a>
 </h3>
 
 <br />
+
+## Preview
+
+Sample preview running the app:
+
+![Preview](.github/preview.png)
 
 ## Installation
 
@@ -30,13 +39,6 @@ Run it using:
 ```sh
 ionic serve
 ```
-
-## Preview
-
-Sample preview running the app:
-
-![Preview](.github/preview.png)
-
 ## Authors
 
 👤 **Akms**
