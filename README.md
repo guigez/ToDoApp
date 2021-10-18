@@ -18,7 +18,7 @@
 
 ## Preview
 
-Sample preview running the app:
+Sample preview:
 
 ![Preview](.github/preview.png)
 
