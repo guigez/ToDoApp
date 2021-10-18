@@ -26,7 +26,7 @@ Sample preview running the app:
 
 Download the latest version of node.
 
-## Running locally
+## Run locally
 
 Alfter clone of the repository, open its folder and install dependencies with:
 
