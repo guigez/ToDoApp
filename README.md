@@ -41,13 +41,13 @@ ionic serve
 ```
 ## Authors
 
-👤 **Akms**
+:snowflake: **Akms**
 - Github: [@akms0](https://github.com/akms0)
 
-👤 **Nyanham**
+:rice_ball:	 **Nyanham**
 - Github: [@nyanham](https://github.com/nyanham)
 
-👤 **Yuuta**
+:ramen: **Yuuta**
 - Github: [@YuutaDragon](https://github.com/YuutaDragon)
 
 ## Show your support
