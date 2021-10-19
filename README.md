@@ -28,7 +28,7 @@ Download the latest version of node.
 
 ## Run locally
 
-Alfter clone of the repository, open its folder and install dependencies with:
+After clone of the repository, open its folder and install dependencies with:
 
 ```shh
 node install
