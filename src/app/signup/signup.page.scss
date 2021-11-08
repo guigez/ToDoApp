@@ -1,3 +1,10 @@
+ion-header{
+  .ep1{
+    width: 50px;
+    height: 50px;  
+  }
+}
+
 ion-content {
    // --background: linear-gradient(90deg, #1CD8D2 0%, #8ee9c3 100%);
     display: flex;
@@ -22,7 +29,7 @@ ion-content {
     }
 
     a{
-      font-size: 12px;
+      font-size: 10px;
       font-family: Roboto;
       font-weight: 600;
     }
@@ -43,10 +50,10 @@ ion-content {
   }
 
   .roundedInput {
-    font-size: 15px;
+    font-size: 12px;
     --placeholder-font-style: Roboto;
     --border-color: var(--ion-color-medium-shade);
-    --border-radius: 4px;
+    --border-radius: 15px;
     --box-shadow: 2px #E9F4FF;
     --highlight-height: 0;
     --background: #f8f9fa;

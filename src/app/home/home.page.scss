@@ -1,27 +1,49 @@
-#container {
-  text-align: center;
+ion-content{
+  h1{
+    font-family: Spartan;
+    font-size: 36px;
+    margin-left: 25px;
+    margin-top: 25px;
+  }
+  .container{
+    ion-text{
+      font-family: Spartan;
+      font-size: 24px;
+      line-height: 40px;
+    }
+    img{
+      margin-top: 10%;
+      }
+  }
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
+  ion-fab{
+    .Add{
+      --background: #64FCD9;
+    }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
+    .Add-task{
+      --background: #8D4FDB
+    }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+    .Add-people{
+      --background: #1CAEFE;
+    }
+  }
 
-  color: #8c8c8c;
+  .cardList{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    ion-card{
+      height: 150px;
+      --background: #58E2CC;
+      --color: white;
+      border-radius: 20%;
+      h2{
+        text-align: center;
+        padding: 57px 0;
+      }
+    }
+  }
 
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
 }

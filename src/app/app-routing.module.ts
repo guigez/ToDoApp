@@ -24,10 +24,6 @@ const routes: Routes = [
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
   {
-    path: 'main',
-    loadChildren: () => import('./main/main.module').then( m => m.MainPageModule)
-  },
-  {
     path: 'create-board',
     loadChildren: () => import('./create-board/create-board.module').then( m => m.CreateBoardPageModule)
   },
