@@ -21,6 +21,7 @@ export class ToDoPage implements OnInit, OnDestroy{
 
   constructor(private api: ApiService, private router: Router) { }
 
+  /*Necessario fazer uma chamada de api para recuperar as tasks de um plano selecionado - boardId salvo no localStorage*/
   ngOnInit() {
     this.tasks = JSON.parse(localStorage.getItem('tasks'));
 
