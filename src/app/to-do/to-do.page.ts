@@ -18,30 +18,35 @@ export class ToDoPage implements OnInit, OnDestroy{
   listCompleted:Task[] = [];
 
   tasks: Task[];
+  boardId: string;
 
   constructor(private api: ApiService, private router: Router) { }
 
   /*Necessario fazer uma chamada de api para recuperar as tasks de um plano selecionado - boardId salvo no localStorage*/
   ngOnInit() {
-    this.tasks = JSON.parse(localStorage.getItem('tasks'));
+    this.boardId = JSON.parse(localStorage.getItem('boardId'));
 
-    this.tasks.forEach(element => {
-      switch(element.status){
-        case 'tasks':
-          this.listTasks.push(element);
-          break;
+    this.api.listTasks(this.boardId).subscribe(data => {
+      this.tasks = data.tasks;
 
-        case 'doing':
-          this.listDoing.push(element);
-          break;
+      this.tasks.forEach(element => {
+        switch(element.status){
+          case 'tasks':
+            this.listTasks.push(element);
+            break;
 
-        case 'completed':
-          this.listCompleted.push(element);
-          break;
+          case 'doing':
+            this.listDoing.push(element);
+            break;
 
-        default:
-          break;
-      }          
+          case 'completed':
+            this.listCompleted.push(element);
+            break;
+
+          default:
+            break;
+        }          
+      });
     });
 
     window.onbeforeunload = () => this.ngOnDestroy();

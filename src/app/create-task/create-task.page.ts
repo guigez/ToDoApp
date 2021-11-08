@@ -22,7 +22,7 @@ export class CreateTaskPage implements OnInit {
     }
     console.log(data)
     this.api.createTask(data).subscribe(result =>{
-      this.router.navigate(['/main']);
+      this.router.navigate(['/to-do']);
     });
   }
 }

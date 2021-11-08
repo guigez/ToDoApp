@@ -48,7 +48,7 @@ export class ApiService {
     return this.http.get<Board[]>(`${this.url}/listBoards`)
   }
 
-  listTasks(){
-
+  listTasks(boardId: string): Observable<any>{
+    return this.http.get<any>(`${this.url}/${boardId}`)
   }
 }

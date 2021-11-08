@@ -22,7 +22,6 @@ export class MainPage implements OnInit {
   listBoards(){
     this.api.listBoards().subscribe(data => {
       this.boards = data;
-
       if(this.boards.length != 0) this.showNothing = true;
     });
   }
