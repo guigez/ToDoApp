@@ -30,7 +30,7 @@ export class ApiService {
   }
 
   updateTask(task: any){
-    return this.http.put(`${this.url}/task/${task._id}`, JSON.stringify(task), this.httpOptions);
+    return this.http.put(`${this.url}/task/status/${task._id}`, JSON.stringify(task), this.httpOptions);
   }
 
   /* Delete */
@@ -49,6 +49,6 @@ export class ApiService {
   }
 
   listTasks(boardId: string): Observable<any>{
-    return this.http.get<any>(`${this.url}/${boardId}`)
+    return this.http.get<any>(`${this.url}/board/listTask/${boardId}`)
   }
 }

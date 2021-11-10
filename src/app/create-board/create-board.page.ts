@@ -21,7 +21,7 @@ export class CreateBoardPage implements OnInit {
       userId: "6164d734a7c92f90abab433c"
     }
     this.api.createBoard(data).subscribe(result =>{
-      this.router.navigate(['/main']);
+      this.router.navigate(['/home']);
     });
   }
 
