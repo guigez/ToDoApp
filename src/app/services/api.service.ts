@@ -24,13 +24,18 @@ export class ApiService {
     return this.http.post<any>(`${this.url}/task`, task);
   }
 
-  /* Update */
-  updateBoard(){
-
+  createUser(user: {name:string, email:string, password:string }): Observable<any>{
+    console.log(user);
+    return this.http.post<any>(`${this.url}/user`, user);
   }
 
-  updateTask(task: any){
-    return this.http.put(`${this.url}/task/status/${task._id}`, JSON.stringify(task), this.httpOptions);
+  /* Update */
+  updateBoard(board: {title: string, id:string}){
+    return this.http.put(`${this.url}/board/update/${board.id}`, board, this.httpOptions);
+  }
+
+  updateStatusTask(task: any){
+    return this.http.put(`${this.url}/task/status/${task._id}`, task, this.httpOptions);
   }
 
   /* Delete */

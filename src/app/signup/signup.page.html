@@ -23,12 +23,12 @@
             <!--<ion-card-content>-->
               <ion-item class = "roundedInput">
                 <ion-label position = "floating" class = "textColor">NAME</ion-label>
-                <ion-input type = "text"></ion-input>
+                <ion-input type = "text" [(ngModel)]="user.name"></ion-input>
               </ion-item>
 
               <ion-item class = "roundedInput">
                 <ion-label position = "floating" class = "textColor">EMAIL</ion-label>
-                <ion-input type = "text"></ion-input>
+                <ion-input type = "text"[(ngModel)]="user.email"></ion-input>
               </ion-item>
 
               <ion-item class = "roundedInput">
@@ -38,11 +38,11 @@
 
               <ion-item class = "roundedInput">
                 <ion-label position = "floating" class = "textColor">CONFIRM PASSWORD</ion-label>
-                <ion-input type = "text"></ion-input>
+                <ion-input type = "text"[(ngModel)]="user.password"></ion-input>
               </ion-item>
 
               <div class="buttons ion-text-center">
-                <ion-button class="button-signup" expand="block" shape="round">SIGN UP</ion-button>
+                <ion-button class="button-signup" expand="block" shape="round" (click)="signup()">SIGN UP</ion-button>
                 <a href="login">ALREADY HAVE AN ACCOUNT?</a>
               </div>
             <!--</ion-card-content>-->

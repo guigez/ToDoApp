@@ -20,6 +20,8 @@ export class ToDoPage implements OnInit, OnDestroy{
   tasks: Task[];
   boardId: string;
 
+
+
   constructor(private api: ApiService, private router: Router) { }
 
   /*Necessario fazer uma chamada de api para recuperar as tasks de um plano selecionado - boardId salvo no localStorage*/
@@ -60,19 +62,20 @@ export class ToDoPage implements OnInit, OnDestroy{
     this.listTasks.forEach(element => {    
       if(element.status != 'tasks'){
         element.status = 'tasks'; 
-        this.api.updateTask(element).subscribe(data => {console.log(data)});
+
+        this.api.updateStatusTask(element).subscribe(data => {console.log(data)});
       }  
     });
     this.listDoing.forEach(element => {    
       if(element.status != 'doing'){
         element.status = 'doing';
-        this.api.updateTask(element).subscribe(data => {console.log(data)});
+        this.api.updateStatusTask(element).subscribe(data => {console.log(data)});
       }  
     });
     this.listCompleted.forEach(element => {    
       if(element.status != 'completed'){
         element.status = 'completed';
-        this.api.updateTask(element).subscribe(data => {console.log(data)}); 
+        this.api.updateStatusTask(element).subscribe(data => {console.log(data)}); 
       }
     });
   }
