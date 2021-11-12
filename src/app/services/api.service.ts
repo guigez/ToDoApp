@@ -44,8 +44,8 @@ export class ApiService {
   }
 
   /* List */
-  listBoards() : Observable<Board[]> {
-    return this.http.get<Board[]>(`${this.url}/listBoards`)
+  listBoardsByUser(userId: string) : Observable<any> {
+    return this.http.get<any>(`${this.url}/user/listBoards/${userId}`)
   }
 
   listTasks(boardId: string): Observable<any>{

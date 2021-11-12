@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'initial',
     pathMatch: 'full'
   },
   {
@@ -25,19 +27,23 @@ const routes: Routes = [
   },
   {
     path: 'create-board',
-    loadChildren: () => import('./create-board/create-board.module').then( m => m.CreateBoardPageModule)
+    loadChildren: () => import('./create-board/create-board.module').then( m => m.CreateBoardPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'create-task',
-    loadChildren: () => import('./create-task/create-task.module').then( m => m.CreateTaskPageModule)
+    loadChildren: () => import('./create-task/create-task.module').then( m => m.CreateTaskPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'to-do',
-    loadChildren: () => import('./to-do/to-do.module').then( m => m.ToDoPageModule)
+    loadChildren: () => import('./to-do/to-do.module').then( m => m.ToDoPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'invite',
-    loadChildren: () => import('./invite/invite.module').then( m => m.InvitePageModule)
+    loadChildren: () => import('./invite/invite.module').then( m => m.InvitePageModule),
+    canActivate: [AuthGuard]
   },
 ];
 

@@ -19,22 +19,18 @@
 
         <ion-item class="roundedInput">
           <ion-label position="floating" class="textColor">EMAIL</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text"[(ngModel)]="credentials.email"></ion-input>
         </ion-item>
 
         <ion-item class="roundedInput">
           <ion-label position="floating" class="textColor">PASSWORD</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="password"[(ngModel)]="credentials.password"></ion-input>
         </ion-item>
         <a href="login" class="forgot">FORGOT PASSWORD?</a>
 
         <br/><br/><br/>
         <div class="buttons ion-text-center">
-          <ion-button
-            class="button-signup"
-            expand="block"
-            shape="round"
-            >LOGIN</ion-button>
+          <ion-button class="button-signup" expand="block" shape="round" (click)="login()">LOGIN</ion-button>
           <a href="signup" class="forgot">DON'T HAVE A ACCOUNT?<br>SIGN UP</a>
         </div>
 

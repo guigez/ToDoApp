@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Board } from 'src/models/Board';
 import { ApiService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -11,16 +12,19 @@ export class HomePage {
 
   showNothing = false;
   boards: Board[];
+  user = null;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private auth:AuthService) { }
 
   ngOnInit() {
-    this.listBoards();
+    this.user = this.auth.getUser();
+    this.listBoards(this.user.id);
   }
 
-  listBoards(){
-    this.api.listBoards().subscribe(data => {
-      this.boards = data;
+  listBoards(boardId: string){
+    this.api.listBoardsByUser(boardId).subscribe(data => {
+     
+      this.boards = data.boards;
 
       if(this.boards.length != 0) this.showNothing = true;
     });
@@ -28,6 +32,5 @@ export class HomePage {
 
   openTasks(board: Board){
     localStorage.setItem('boardId',JSON.stringify(board._id))
-    localStorage.setItem('tasks', JSON.stringify(board.tasks));
   }
 }
