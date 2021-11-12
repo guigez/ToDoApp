@@ -17,6 +17,7 @@ export class ApiService {
 
   /* Create */
   createBoard(board: any): Observable<any>{
+    console.log(board)
     return this.http.post<any>(`${this.url}/board`, board);
   }
 
@@ -41,7 +42,7 @@ export class ApiService {
   /* Delete */
 
   deleteBoard(){
-
+  
   }
 
   deleteTask(){

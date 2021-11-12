@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
 
@@ -14,13 +15,15 @@ export class SignupPage implements OnInit {
     password: ''
   }
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit() {
   }
 
   signup(){
-    this.api.createUser(this.user);
+    this.api.createUser(this.user).subscribe(result => {
+      this.router.navigate(['/login']);
+    });
   }
 
 }
