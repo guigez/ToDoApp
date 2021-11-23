@@ -1,60 +1,137 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Board } from '../../models/Board';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
+
   private url: string = 'http://localhost:3333';
-  httpOptions = {
-    headers: new HttpHeaders ({ 'Content-Type': 'application/json' })
-  };
+  private token: string;
+  httpOptions: any = {};
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { 
+  }
 
   /* Create */
   createBoard(board: any): Observable<any>{
-    console.log(board)
-    return this.http.post<any>(`${this.url}/board`, board);
+    this.token = this.auth.getToken();
+
+    this.httpOptions = {
+      Headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      'Authorization':  `Bearer ${this.token.substr(1,this.token.length -2)}`
+    }
+    
+    return this.http.post<any>(`${this.url}/board`, board, {headers: this.httpOptions});
   }
 
   createTask(task: any): Observable<any>{
-    return this.http.post<any>(`${this.url}/task`, task);
+    this.token = this.auth.getToken();
+
+    this.httpOptions = {
+      Headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      'Authorization':  `Bearer ${this.token.substr(1,this.token.length -2)}`
+    }
+    
+    return this.http.post<any>(`${this.url}/task`, task, {headers: this.httpOptions});
   }
 
   createUser(user: {name:string, email:string, password:string }): Observable<any>{
-    console.log(user);
     return this.http.post<any>(`${this.url}/user`, user);
   }
 
   /* Update */
   updateBoard(board: {title: string, id:string}){
-    return this.http.put(`${this.url}/board/update/${board.id}`, board, this.httpOptions);
+    this.token = this.auth.getToken();
+
+    this.httpOptions = {
+      Headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      'Authorization':  `Bearer ${this.token.substr(1,this.token.length -2)}`
+    }
+    
+    return this.http.put(`${this.url}/board/update/${board.id}`, board, {headers: this.httpOptions});
   }
 
   updateStatusTask(task: any){
-    return this.http.put(`${this.url}/task/status/${task._id}`, task, this.httpOptions);
+    this.token = this.auth.getToken();
+
+    this.httpOptions = {
+      Headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      'Authorization':  `Bearer ${this.token.substr(1,this.token.length -2)}`
+    }
+    
+    return this.http.put(`${this.url}/task/status/${task._id}`, task, {headers: this.httpOptions});
   }
 
   /* Delete */
 
-  deleteBoard(){
+  deleteBoard(board: any){
+    this.token = this.auth.getToken();
+
+    this.httpOptions = {
+      Headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      'Authorization':  `Bearer ${this.token.substr(1,this.token.length -2)}`
+    }
+    
+    this.http.delete(`${this.url}/board/delete/${board._id}`, {headers: this.httpOptions})
   
   }
 
-  deleteTask(){
+  deleteTask(task: any){
+    this.token = this.auth.getToken();
+
+    this.httpOptions = {
+      Headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      'Authorization':  `Bearer ${this.token.substr(1,this.token.length -2)}`
+    }
+
+    return this.http.delete(`${this.url}/task/delete/${task._id}/${task.board_id}`, {headers: this.httpOptions});
 
   }
 
   /* List */
   listBoardsByUser(userId: string) : Observable<any> {
-    return this.http.get<any>(`${this.url}/user/listBoards/${userId}`)
+    this.token = this.auth.getToken();
+
+    this.httpOptions = {
+      Headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      'Authorization':  `Bearer ${this.token.substr(1,this.token.length -2)}`
+    }
+    
+    return this.http.get<any>(`${this.url}/user/listBoards/${userId}`, {headers: this.httpOptions});
+
   }
 
   listTasks(boardId: string): Observable<any>{
-    return this.http.get<any>(`${this.url}/board/listTask/${boardId}`)
+
+    this.token = this.auth.getToken();
+
+    this.httpOptions = {
+      Headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      'Authorization':  `Bearer ${this.token.substr(1,this.token.length -2)}`
+    }
+    
+    return this.http.get<any>(`${this.url}/board/listTask/${boardId}`, {headers: this.httpOptions})
   }
 }
