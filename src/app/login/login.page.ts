@@ -19,19 +19,22 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  login(){
-    this.auth.login(this.credentials).subscribe(async res => {
-      if(res)
-        this.router.navigateByUrl('/home');
+  login() {
+    if (this.credentials.email != '' || this.credentials.password != '') {
 
-      else{
-        const alert = await this.alertCtrl.create({
-          header: 'Login Failed',
-          message: 'Email or Password Incorrect',
-          buttons: ['OK']
-        });
-        await alert.present();
-      }
-    })
+      this.auth.login(this.credentials).subscribe(async res => {
+        if (res)
+          this.router.navigateByUrl('/home');
+
+        else {
+          const alert = await this.alertCtrl.create({
+            header: 'Login Failed',
+            message: 'Email or Password Incorrect',
+            buttons: ['OK']
+          });
+          await alert.present();
+        }
+      })
+    }
   }
 }

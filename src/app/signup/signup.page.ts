@@ -20,10 +20,13 @@ export class SignupPage implements OnInit {
   ngOnInit() {
   }
 
-  signup(){
-    this.api.createUser(this.user).subscribe(result => {
-      this.router.navigate(['/login']);
-    });
+  signup() {
+    if (this.user.name != '' || this.user.email != '' || this.user.password != '') {
+
+      this.api.createUser(this.user).subscribe(result => {
+        this.router.navigate(['/login']);
+      });
+    }
   }
 
 }
