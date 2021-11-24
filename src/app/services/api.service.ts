@@ -103,7 +103,7 @@ export class ApiService {
   
   }
 
-  deleteTask(task: any){
+  deleteTask(task: any): Observable<any> {
     this.token = this.auth.getToken();
 
     this.httpOptions = {
@@ -113,7 +113,7 @@ export class ApiService {
       'Authorization':  `Bearer ${this.token.substr(1,this.token.length -2)}`
     }
 
-    return this.http.delete(`${this.url}/task/delete/${task._id}/${task.board_id}`, {headers: this.httpOptions});
+    return this.http.delete(`${this.url}/task/delete/${task._id}/${task.boardId}`, {headers: this.httpOptions});
 
   }
 
@@ -145,4 +145,19 @@ export class ApiService {
     
     return this.http.get<any>(`${this.url}/board/listTask/${boardId}`, {headers: this.httpOptions})
   }
+
+  invite(data: any): Observable<any>{
+    this.token = this.auth.getToken();
+
+    this.httpOptions = {
+      Headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      'Authorization':  `Bearer ${this.token.substr(1,this.token.length -2)}`
+    }
+    
+    return this.http.put<any>(`${this.url}/invite`, data, {headers: this.httpOptions})
+
+  }
+  
 }

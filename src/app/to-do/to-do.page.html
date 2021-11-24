@@ -20,7 +20,7 @@
     <ion-list-header>Tasks</ion-list-header>
       <ion-card *ngFor="let item of listTasks" cdkDrag>
         <ion-card-content>{{item.title}}
-          <ion-button fill="clear" class="delete" (click)="deleteTaks()">
+          <ion-button fill="clear" class="delete" (click)="deleteTask(item._id)">
           <ion-icon name="close-outline"></ion-icon>
         </ion-button>
           <ion-button fill="clear" class="edit" href="edit-task" (click)="editTask(item)">
@@ -44,7 +44,7 @@
     <ion-list-header>Doing</ion-list-header>
       <ion-card *ngFor="let item of listDoing" cdkDrag>
         <ion-card-content> {{item.title}} </ion-card-content>
-        <ion-button fill="clear" class="delete" (click)="deleteTaks()">
+        <ion-button fill="clear" class="delete" (click)="deleteTask(item._id)">
           <ion-icon name="close-outline"></ion-icon>
         </ion-button>
           <ion-button fill="clear" class="edit" href="edit-task" (click)="editTask(item)">
@@ -65,7 +65,7 @@
     <ion-list-header>Completed</ion-list-header>
       <ion-card *ngFor="let item of listCompleted" cdkDrag>
         <ion-card-content> {{item.title}} </ion-card-content>
-        <ion-button fill="clear" class="delete" (click)="deleteTaks()">
+        <ion-button fill="clear" class="delete" (click)="deleteTask(item._id)">
           <ion-icon name="close-outline"></ion-icon>
         </ion-button>
           <ion-button fill="clear" class="edit" href="edit-task" (click)="editTask(item)">

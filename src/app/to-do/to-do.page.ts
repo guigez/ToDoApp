@@ -1,7 +1,7 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewDidLeave, ViewWillLeave } from '@ionic/angular';
+import { NavController} from '@ionic/angular';
 import { Task } from '../../models/task';
 import { ApiService } from '../services/api.service';
 
@@ -22,14 +22,16 @@ export class ToDoPage implements OnInit, OnDestroy{
 
 
 
-  constructor(private api: ApiService, private router: Router) { }
+  constructor(private api: ApiService, private router: Router, private navCtrl: NavController) { }
 
   /*Necessario fazer uma chamada de api para recuperar as tasks de um plano selecionado - boardId salvo no localStorage*/
   ngOnInit() {
     this.boardId = JSON.parse(localStorage.getItem('boardId'));
+    
 
     this.api.listTasks(this.boardId).subscribe(data => {
       this.tasks = data.tasks;
+      console.log(data.tasks);
 
       this.tasks.forEach(element => {
         switch(element.status){
@@ -94,23 +96,16 @@ export class ToDoPage implements OnInit, OnDestroy{
     //this.updateTasks();
   }
 
-  deleteTask(typeList: string){
+  deleteTask(taskId: any){
    const task = {
-      _id: '' ,
+      _id:  taskId,
       boardId: this.boardId
     }
 
-    this.api.deleteTask(task);
-    
-    switch(typeList){
-      case 'tasks':
-
-      case 'doing':
-
-      case 'completed':
-        
-      default:break;
-    }
+    console.log(task);
+    this.api.deleteTask(task).subscribe();
+    //this.navCtrl.setRoot(this.navCtrl.getActive().component);
+    window.location.reload();
   }
 
 }
