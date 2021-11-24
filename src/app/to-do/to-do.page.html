@@ -1,8 +1,5 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button auto-hide="false"></ion-menu-button>
-    </ion-buttons>
     <ion-buttons slot="primary">
       <ion-button href="home">
         <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
@@ -22,7 +19,13 @@
     >
     <ion-list-header>Tasks</ion-list-header>
       <ion-card *ngFor="let item of listTasks" cdkDrag>
-        <ion-card-content> {{item.title}} 
+        <ion-card-content>{{item.title}}
+          <ion-button fill="clear" class="delete" (click)="deleteTaks()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+          <ion-button fill="clear" class="edit" href="edit-task" (click)="editTask(item)">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
         </ion-card-content>
       </ion-card>
    
@@ -41,6 +44,12 @@
     <ion-list-header>Doing</ion-list-header>
       <ion-card *ngFor="let item of listDoing" cdkDrag>
         <ion-card-content> {{item.title}} </ion-card-content>
+        <ion-button fill="clear" class="delete" (click)="deleteTaks()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+          <ion-button fill="clear" class="edit" href="edit-task" (click)="editTask(item)">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
       </ion-card>
     </ion-list>
   </div>
@@ -56,6 +65,12 @@
     <ion-list-header>Completed</ion-list-header>
       <ion-card *ngFor="let item of listCompleted" cdkDrag>
         <ion-card-content> {{item.title}} </ion-card-content>
+        <ion-button fill="clear" class="delete" (click)="deleteTaks()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+          <ion-button fill="clear" class="edit" href="edit-task" (click)="editTask(item)">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
       </ion-card>
     </ion-list>
   </div>

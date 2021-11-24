@@ -44,7 +44,11 @@ const routes: Routes = [
     path: 'invite',
     loadChildren: () => import('./invite/invite.module').then( m => m.InvitePageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'edit-task',
+    loadChildren: () => import('./edit-task/edit-task.module').then( m => m.EditTaskPageModule)
   },
+
 ];
 
 @NgModule({

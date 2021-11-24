@@ -76,6 +76,17 @@ export class ApiService {
     return this.http.put(`${this.url}/task/status/${task._id}`, task, {headers: this.httpOptions});
   }
 
+  updateTask(task: any): Observable<any>{
+    const authtoken = this.auth.getToken();
+
+    this.httpOptions = {
+      Headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+    }
+    
+    return this.http.put(`${this.url}/task/update/${task.taskId}`, task);
+  }
   /* Delete */
 
   deleteBoard(board: any){

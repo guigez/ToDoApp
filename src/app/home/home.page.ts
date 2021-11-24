@@ -33,4 +33,9 @@ export class HomePage {
   openTasks(board: Board){
     localStorage.setItem('boardId',JSON.stringify(board._id))
   }
+
+  logout(){
+    this.auth.logout();
+  }
+
 }

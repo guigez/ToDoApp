@@ -58,6 +58,10 @@ export class ToDoPage implements OnInit, OnDestroy{
     this.updateTasks();
   }
 
+  editTask(taks: Task){
+    localStorage.setItem('taskId',JSON.stringify(taks._id))
+  }
+
   updateTasks(){
     this.listTasks.forEach(element => {    
       if(element.status != 'tasks'){
@@ -88,6 +92,25 @@ export class ToDoPage implements OnInit, OnDestroy{
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
     //this.updateTasks();
+  }
+
+  deleteTask(typeList: string){
+   const task = {
+      _id: '' ,
+      boardId: this.boardId
+    }
+
+    this.api.deleteTask(task);
+    
+    switch(typeList){
+      case 'tasks':
+
+      case 'doing':
+
+      case 'completed':
+        
+      default:break;
+    }
   }
 
 }

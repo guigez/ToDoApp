@@ -1,0 +1,23 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button href="to-do">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+
+  <h1>EDIT<br>TASK</h1>
+
+  <ion-item class = "Input">
+    <ion-label position = "floating" class = "textColor">TITLE TASK</ion-label>
+    <ion-input #taskTitle type = "text"></ion-input>
+  </ion-item>
+
+  <div class="buttons ion-text-center">
+    <ion-button class="button-create" expand="block" shape="round" (click)="editTask(taskTitle.value)">SAVE</ion-button>
+  </div>
+</ion-content>
