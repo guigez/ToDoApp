@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -9,9 +10,17 @@ import { ApiService } from '../services/api.service';
 })
 export class CreateTaskPage implements OnInit {
 
-  constructor(private api: ApiService, private router: Router) { }
+  constructor(private api: ApiService, private router: Router, public toastController: ToastController) { }
 
   ngOnInit() {
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Task Created with Sucess.',
+      duration: 2000
+    });
+    toast.present();
   }
 
   createTask(title: String){
@@ -22,6 +31,7 @@ export class CreateTaskPage implements OnInit {
     }
     console.log(data)
     this.api.createTask(data).subscribe(result =>{
+      this.presentToast();
       this.router.navigate(['/to-do']);
     });
   }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 import { Board } from 'src/models/Board';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
@@ -14,7 +15,7 @@ export class HomePage {
   boards: Board[];
   user = null;
 
-  constructor(private api: ApiService, private auth:AuthService) { }
+  constructor(private api: ApiService, private auth:AuthService, public toastController: ToastController) { }
 
   ngOnInit() {
     this.user = this.auth.getUser();
@@ -34,8 +35,17 @@ export class HomePage {
     localStorage.setItem('boardId',JSON.stringify(board._id))
   }
 
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Logout realized with Sucess.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
   logout(){
     this.auth.logout();
+    this.presentToast();
   }
 
 }

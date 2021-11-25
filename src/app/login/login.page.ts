@@ -19,12 +19,13 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  login() {
+  async login() {
     if (this.credentials.email != '' || this.credentials.password != '') {
 
       this.auth.login(this.credentials).subscribe(async res => {
-        if (res)
+        if (res) {
           this.router.navigateByUrl('/home');
+        }
 
         else {
           const alert = await this.alertCtrl.create({
@@ -35,6 +36,15 @@ export class LoginPage implements OnInit {
           await alert.present();
         }
       })
+
+
+    } else {
+      const alert = await this.alertCtrl.create({
+        header: 'Login Failed',
+        message: 'Insert Email and Password',
+        buttons: ['OK']
+      });
+      await alert.present();
     }
   }
 }

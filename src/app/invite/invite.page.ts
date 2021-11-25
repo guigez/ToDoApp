@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -10,9 +11,18 @@ import { ApiService } from '../services/api.service';
 export class InvitePage implements OnInit {
    
 
-  constructor(private api: ApiService, private router: Router) { }
+  constructor(private api: ApiService, private router: Router, public toastController: ToastController) { }
 
   ngOnInit() {
+  }
+
+  
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
   }
 
   invite(email: string){
@@ -22,7 +32,16 @@ export class InvitePage implements OnInit {
     }
 
     console.log(data)
-    this.api.invite(data).subscribe();
+    this.api.invite(data).subscribe(result =>{
+      if(result.error){
+        this.presentToast(result.error);
+      }
+      else{
+        this.presentToast('User Added');
+      }
+
+    });
+   
     this.router.navigate(['/to-do']);
   }
 }

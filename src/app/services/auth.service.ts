@@ -55,7 +55,8 @@ export class AuthService {
       take(1),
       map(res => {
         console.log(res)
-        return JSON.stringify(res);
+        if(res) return JSON.stringify(res);
+        else null;
       }),
       switchMap(token => {
         let decoded = helper.decodeToken(token);
