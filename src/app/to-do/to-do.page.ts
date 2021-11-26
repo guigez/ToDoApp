@@ -111,12 +111,7 @@ export class ToDoPage implements OnInit, OnDestroy{
       _id:  taskId,
       boardId: this.boardId
     }
-
-    console.log(task);
-    this.api.deleteTask(task).subscribe(result => {
-      
-    });
-  
+    this.api.deleteTask(task).subscribe(result => {});
     window.location.reload();
     
   }

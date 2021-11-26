@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { ApiService } from '../services/api.service';
 export class InvitePage implements OnInit {
    
 
-  constructor(private api: ApiService, private router: Router, public toastController: ToastController) { }
+  constructor(private api: ApiService, private router: Router, public toastController: ToastController, private alertCtrl: AlertController) { }
 
   ngOnInit() {
   }
@@ -25,23 +25,35 @@ export class InvitePage implements OnInit {
     toast.present();
   }
 
-  invite(email: string){
-    const data = {
-      emailUser: email,
-      boardId: JSON.parse(localStorage.getItem('boardId'))
-    }
-
-    console.log(data)
-    this.api.invite(data).subscribe(result =>{
-      if(result.error){
-        this.presentToast(result.error);
-      }
-      else{
-        this.presentToast('User Added');
-      }
-
+  async presentAlert(message: string){
+    const alert = await this.alertCtrl.create({
+      header: 'Invite Fail',
+      message: message,
+      buttons: ['OK']
     });
-   
-    this.router.navigate(['/to-do']);
+    await alert.present();
+  }
+
+
+  invite(email: string){
+
+    if(email.length != 0){
+      const data = {
+        emailUser: email,
+        boardId: JSON.parse(localStorage.getItem('boardId'))
+      }
+
+      this.api.invite(data).subscribe(result =>{
+        if(result.error){
+          this.presentAlert(result.message);
+        }
+        else{
+          this.presentToast('User Added');
+          this.router.navigate(['/to-do']);
+        }
+      });
+    } else {
+      this.presentAlert('Insert some email.');
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
 
@@ -13,7 +13,7 @@ import { AuthService } from '../services/auth.service';
 export class CreateBoardPage implements OnInit {
 
 
-  constructor( private api: ApiService, private auth: AuthService, private router: Router, public toastController: ToastController) {  }
+  constructor( private api: ApiService, private auth: AuthService, private router: Router, public toastController: ToastController, private alertCtrl: AlertController) {  }
 
   ngOnInit() { }
 
@@ -25,15 +25,28 @@ export class CreateBoardPage implements OnInit {
     toast.present();
   }
 
-  createBoard(title: String){
-    const data = {
-      title: title,
-      userId: this.auth.getUser().id
-    }
-    this.api.createBoard(data).subscribe(result =>{
-      this.presentToast();
-      this.router.navigate(['/home']);
+  async presentAlert(){
+    const alert = await this.alertCtrl.create({
+      header: 'Create Fail',
+      message: 'Insert some title.',
+      buttons: ['OK']
     });
+    await alert.present();
+  }
+
+  createBoard(title: String){
+    if(title.length != 0){
+      const data = {
+        title: title,
+        userId: this.auth.getUser().id
+      }
+      this.api.createBoard(data).subscribe(result =>{
+        this.presentToast();
+        this.router.navigate(['/home']);
+      });
+    } else {
+      this.presentAlert();
+    }
   }
 
 }

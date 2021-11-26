@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    if (this.credentials.email != '' || this.credentials.password != '') {
+    if (this.credentials.email != '' && this.credentials.password != '') {
 
       this.auth.login(this.credentials).subscribe(async res => {
         if (res) {
